@@ -36,9 +36,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mniEliminar = new javax.swing.JMenuItem();
         mniModificar = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mniAgregarVehiculo = new javax.swing.JMenuItem();
+        mniEliminarVehiculo = new javax.swing.JMenuItem();
+        mniModificarVehiculo = new javax.swing.JMenuItem();
         mniListarVehiculo = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -89,14 +89,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("Gestion Vehiculo");
 
-        jMenuItem1.setText("Agregar");
-        jMenu5.add(jMenuItem1);
+        mniAgregarVehiculo.setText("Agregar");
+        mniAgregarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarVehiculoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mniAgregarVehiculo);
 
-        jMenuItem2.setText("Eliminar");
-        jMenu5.add(jMenuItem2);
+        mniEliminarVehiculo.setText("Eliminar");
+        mniEliminarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarVehiculoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mniEliminarVehiculo);
 
-        jMenuItem3.setText("Modificar");
-        jMenu5.add(jMenuItem3);
+        mniModificarVehiculo.setText("Modificar");
+        mniModificarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniModificarVehiculoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mniModificarVehiculo);
 
         mniListarVehiculo.setText("Listar");
         mniListarVehiculo.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +174,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_mniListarVehiculoActionPerformed
 
+    private void mniAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarVehiculoActionPerformed
+        AgregarVehiculo av = new AgregarVehiculo();
+        av.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mniAgregarVehiculoActionPerformed
+
+    private void mniEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarVehiculoActionPerformed
+        EliminarVehiculo ev = new EliminarVehiculo();
+        ev.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mniEliminarVehiculoActionPerformed
+
+    private void mniModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarVehiculoActionPerformed
+        ModificarVehiculo mv = new ModificarVehiculo();
+        mv.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mniModificarVehiculoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,13 +236,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem mniAgregarCliente;
+    private javax.swing.JMenuItem mniAgregarVehiculo;
     private javax.swing.JMenuItem mniEliminar;
+    private javax.swing.JMenuItem mniEliminarVehiculo;
     private javax.swing.JMenuItem mniListarCliente;
     private javax.swing.JMenuItem mniListarVehiculo;
     private javax.swing.JMenuItem mniModificar;
+    private javax.swing.JMenuItem mniModificarVehiculo;
     // End of variables declaration//GEN-END:variables
 }
