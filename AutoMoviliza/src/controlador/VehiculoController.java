@@ -132,7 +132,24 @@ public class VehiculoController {
     }
     
     
-    
+    public void modificarVehiculo(int parId, String parMarca, String parModelo, Date parAnio,String parTipo, int parPrecio, String parEstado){
+        String query = "UPDATE vehiculo SET marca = ?,modelo = ?, anio = ?, tipo = ?, precio = ?, estado = ? WHERE  idVehiculo= ?;";
+
+        java.sql.Date anioIngresado = new java.sql.Date(parAnio.getTime());
+        try {
+            PreparedStatement ps = cx.getConnection().prepareStatement(query);
+            ps.setString(1, parMarca);
+            ps.setString(2,parModelo);
+            ps.setDate (3, anioIngresado);
+            ps.setString(4, parTipo);
+            ps.setInt(5, parPrecio);
+            ps.setString(6, parEstado);
+            ps.setInt(7, parId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error modificar vehiculo " + e.getMessage());
+        }
+    }
        
         
         
