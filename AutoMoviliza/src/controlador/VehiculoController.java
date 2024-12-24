@@ -41,7 +41,7 @@ public class VehiculoController {
     }        
     
     
-    public List<String> obtenerModelo(){
+    public List<String> obtenerModelos(){
             List<String> modelos = new ArrayList<>();
             String query = "SELECT * FROM vehiculo";
             
@@ -58,6 +58,7 @@ public class VehiculoController {
             return modelos;
         }
         
+    
      public List<String> obtenerMarcas(){
             List<String>  marcas = new ArrayList<>();
             String query = "SELECT * FROM vehiculo";
@@ -74,7 +75,56 @@ public class VehiculoController {
             }
             return marcas;
         }
-
+     
+        public List<Vehiculo> obtenerVehiculosFiltroMarca(String parMarca){
+            List<Vehiculo> vehiculos = new ArrayList<>();
+            String query = "SELECT * FROM vehiculo WHERE marca = '" + parMarca + "';";
+            
+            try {
+                ResultSet rs = cx.EjecutarQuery(query);
+                while(rs.next()){
+                    vehiculos.add(new Vehiculo(
+                        rs.getInt("idVehiculo"),
+                        rs.getString("marca"),
+                        rs.getString("modelo"),
+                        rs.getDate("anio"),
+                        rs.getString("tipo"),
+                        rs.getInt("precio"),
+                        rs.getString("estado")
+                    ));  
+                }
+            } catch (Exception e) {
+                System.out.println("Error obtener vehiculos " + e.getMessage());
+            }
+            return vehiculos;
+        }          
+       
+        
+        public List<Vehiculo> obtenerVehiculosFiltroModelo(String parModelo){
+            List<Vehiculo> vehiculos = new ArrayList<>();
+            String query = "SELECT * FROM vehiculo WHERE modelo = '" + parModelo + "';";
+            
+            try {
+                ResultSet rs = cx.EjecutarQuery(query);
+                while(rs.next()){
+                    vehiculos.add(new Vehiculo(
+                        rs.getInt("idVehiculo"),
+                        rs.getString("marca"),
+                        rs.getString("modelo"),
+                        rs.getDate("anio"),
+                        rs.getString("tipo"),
+                        rs.getInt("precio"),
+                        rs.getString("estado")
+                    ));  
+                }
+            } catch (Exception e) {
+                System.out.println("Error obtener vehiculos " + e.getMessage());
+            }
+            return vehiculos;
+        }          
+          
+     
+     
         public List<Vehiculo> obtenerVehiculos(){
             List<Vehiculo> vehiculos = new ArrayList<>();
             String query = "SELECT * FROM vehiculo";

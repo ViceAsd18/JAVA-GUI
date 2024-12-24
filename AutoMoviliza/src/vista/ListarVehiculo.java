@@ -21,6 +21,8 @@ public class ListarVehiculo extends javax.swing.JFrame {
     public ListarVehiculo() {
         initComponents();
         cargarDatosVehiculo();
+        cargarComboMarca();
+        cargarComboModelo();
     }
 
     /**
@@ -37,6 +39,12 @@ public class ListarVehiculo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVehiculos = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cmbMarcas = new javax.swing.JComboBox<>();
+        btnFiltrarMarca = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cmbModelos = new javax.swing.JComboBox<>();
+        btnFiltrarModelo = new javax.swing.JButton();
 
         btnFiltrar1.setText("Filtrar");
 
@@ -45,6 +53,7 @@ public class ListarVehiculo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Listar");
 
+        tblVehiculos.setForeground(new java.awt.Color(0, 0, 0));
         tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -73,31 +82,76 @@ public class ListarVehiculo extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Marca");
+
+        btnFiltrarMarca.setText("Filtrar");
+        btnFiltrarMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarMarcaActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Modelo");
+
+        btnFiltrarModelo.setText("Filtrar");
+        btnFiltrarModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarModeloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(278, 278, 278))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(292, 292, 292))
+                .addComponent(btnVolver)
+                .addGap(280, 280, 280))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbModelos, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(btnFiltrarMarca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFiltrarModelo)
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbModelos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFiltrarMarca)
+                    .addComponent(btnFiltrarModelo))
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnVolver)
                 .addGap(18, 18, 18))
         );
@@ -112,6 +166,14 @@ public class ListarVehiculo extends javax.swing.JFrame {
         mp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnFiltrarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarMarcaActionPerformed
+        cargarDatosFiltroMarcas();
+    }//GEN-LAST:event_btnFiltrarMarcaActionPerformed
+
+    private void btnFiltrarModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarModeloActionPerformed
+        cargarDatosFiltroModelo();
+    }//GEN-LAST:event_btnFiltrarModeloActionPerformed
 
         
     private void cargarDatosVehiculo(){
@@ -131,6 +193,55 @@ public class ListarVehiculo extends javax.swing.JFrame {
         }
     }
 
+    
+    private void cargarComboMarca(){
+        List<String> marcas = vc.obtenerMarcas();
+        for(String i: marcas){
+            cmbMarcas.addItem(i);
+        }
+    }
+    
+    private void cargarComboModelo(){
+        List<String> modelos = vc.obtenerModelos();
+        for(String i: modelos){
+            cmbModelos.addItem(i);
+        }
+    }    
+    
+    private void cargarDatosFiltroMarcas(){
+        DefaultTableModel marcas = (DefaultTableModel) tblVehiculos.getModel();
+        marcas.setRowCount(0);
+        
+        for(Vehiculo i: vc.obtenerVehiculosFiltroMarca(String.valueOf(cmbMarcas.getSelectedItem()))){
+            marcas.addRow(new Object[]{
+                i.getIdVehiculo(),
+                i.getMarca(),
+                i.getModelo(),
+                i.getAño(),
+                i.getTipo(),
+                i.getPrecio(),
+                i.getEstado(),
+            });
+        }
+    }
+    
+    private void cargarDatosFiltroModelo(){
+        DefaultTableModel modelos = (DefaultTableModel) tblVehiculos.getModel();
+        modelos.setRowCount(0);
+        
+        for(Vehiculo i: vc.obtenerVehiculosFiltroModelo(String.valueOf(cmbModelos.getSelectedItem()))){
+            modelos.addRow(new Object[]{
+                i.getIdVehiculo(),
+                i.getMarca(),
+                i.getModelo(),
+                i.getAño(),
+                i.getTipo(),
+                i.getPrecio(),
+                i.getEstado(),
+            });
+        }
+    }    
+    
     /**
      * @param args the command line arguments
      */
@@ -168,8 +279,14 @@ public class ListarVehiculo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltrar1;
+    private javax.swing.JButton btnFiltrarMarca;
+    private javax.swing.JButton btnFiltrarModelo;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cmbMarcas;
+    private javax.swing.JComboBox<String> cmbModelos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblVehiculos;
     // End of variables declaration//GEN-END:variables

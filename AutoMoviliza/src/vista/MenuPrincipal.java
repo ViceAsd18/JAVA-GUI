@@ -42,6 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mniListarVehiculo = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        mniSalir = new javax.swing.JMenuItem();
 
         jMenu3.setText("File");
         jMenuBar2.add(jMenu3);
@@ -127,6 +128,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu2.setText("Salir");
+
+        mniSalir.setText("Salir");
+        mniSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniSalirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mniSalir);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -192,6 +202,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_mniModificarVehiculoActionPerformed
 
+    private void mniSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_mniSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,5 +258,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniListarVehiculo;
     private javax.swing.JMenuItem mniModificar;
     private javax.swing.JMenuItem mniModificarVehiculo;
+    private javax.swing.JMenuItem mniSalir;
     // End of variables declaration//GEN-END:variables
 }
