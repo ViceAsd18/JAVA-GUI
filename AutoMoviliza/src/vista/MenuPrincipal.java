@@ -41,6 +41,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mniModificarVehiculo = new javax.swing.JMenuItem();
         mniListarVehiculo = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        mniAgregarTransaccion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mniSalir = new javax.swing.JMenuItem();
 
@@ -125,6 +126,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Gestion Transaccion");
+
+        mniAgregarTransaccion.setText("Agregar");
+        mniAgregarTransaccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarTransaccionActionPerformed(evt);
+            }
+        });
+        jMenu6.add(mniAgregarTransaccion);
+
         jMenuBar1.add(jMenu6);
 
         jMenu2.setText("Salir");
@@ -158,53 +168,69 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void mniAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarClienteActionPerformed
         AgregarCliente ac = new AgregarCliente();
         ac.setVisible(true);
+        ac.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_mniAgregarClienteActionPerformed
 
     private void mniListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListarClienteActionPerformed
         ListarClientes lc = new ListarClientes();
         lc.setVisible(true);
+        lc.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniListarClienteActionPerformed
 
     private void mniEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarActionPerformed
         EliminarCliente ec = new EliminarCliente();
         ec.setVisible(true);
+        ec.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniEliminarActionPerformed
 
     private void mniModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarActionPerformed
         ModificarCliente mc = new ModificarCliente();
         mc.setVisible(true);
+        mc.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniModificarActionPerformed
 
     private void mniListarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListarVehiculoActionPerformed
         ListarVehiculo lv = new ListarVehiculo();
         lv.setVisible(true);
+        lv.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniListarVehiculoActionPerformed
 
     private void mniAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarVehiculoActionPerformed
         AgregarVehiculo av = new AgregarVehiculo();
         av.setVisible(true);
+        av.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniAgregarVehiculoActionPerformed
 
     private void mniEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarVehiculoActionPerformed
         EliminarVehiculo ev = new EliminarVehiculo();
         ev.setVisible(true);
+        ev.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniEliminarVehiculoActionPerformed
 
     private void mniModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarVehiculoActionPerformed
         ModificarVehiculo mv = new ModificarVehiculo();
         mv.setVisible(true);
+        mv.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_mniModificarVehiculoActionPerformed
 
     private void mniSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_mniSalirActionPerformed
+
+    private void mniAgregarTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarTransaccionActionPerformed
+        AgregarTransaccion at = new AgregarTransaccion();
+        at.setVisible(true);
+        at.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_mniAgregarTransaccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +277,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem mniAgregarCliente;
+    private javax.swing.JMenuItem mniAgregarTransaccion;
     private javax.swing.JMenuItem mniAgregarVehiculo;
     private javax.swing.JMenuItem mniEliminar;
     private javax.swing.JMenuItem mniEliminarVehiculo;
