@@ -190,6 +190,7 @@ public class ModificarCliente extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         MenuPrincipal mp = new MenuPrincipal();
         mp.setVisible(true);
+        mp.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
