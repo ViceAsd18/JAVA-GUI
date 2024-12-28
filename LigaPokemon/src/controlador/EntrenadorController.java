@@ -28,6 +28,27 @@ public class EntrenadorController {
         return condicion;
     }
 
+    public Entrenador buscarEntrenadorPorID(int parId){
+        Entrenador entrenadorEncontrado = null;
+        String query = "SELECT * FROM entrenador WHERE idEntrenador = " + parId + ";";
+        
+        try {
+            ResultSet rs = cx.EjecutarQuery(query);
+            while(rs.next()){
+                    entrenadorEncontrado = new Entrenador(
+                            rs.getInt("idEntrenador"),
+                            rs.getString("nombre"),
+                            rs.getString("region"),
+                            rs.getInt("medallasGanadas"),
+                            rs.getInt("nivelExperiencia")
+                    );
+            }
+        } catch (Exception e) {
+            System.out.println("Error buscar Entrenador por id "+ e.getMessage());
+        }
+        return entrenadorEncontrado;
+    }
+    
    
    public List<Entrenador> obtenerEntrenadores(){
        List<Entrenador> entrenadores = new ArrayList<>();

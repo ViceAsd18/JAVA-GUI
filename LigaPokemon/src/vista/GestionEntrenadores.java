@@ -28,6 +28,8 @@ public class GestionEntrenadores extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,31 +111,48 @@ public class GestionEntrenadores extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        btnVolver.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Volver.png")); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(92, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(64, 64, 64)))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(175, 175, 175)
+                .addGap(22, 22, 22)
+                .addComponent(btnAgregar)
+                .addGap(48, 48, 48)
                 .addComponent(btnEliminar)
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(59, 59, 59)
-                    .addComponent(btnAgregar)
-                    .addContainerGap(367, Short.MAX_VALUE)))
+                .addGap(60, 60, 60)
+                .addComponent(btnEditar)
+                .addGap(57, 57, 57)
+                .addComponent(btnVolver)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,29 +214,49 @@ public class GestionEntrenadores extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         DefaultTableModel item = (DefaultTableModel) tblListadoEntrenadores.getModel();
-        int ItemSeleccionado = tblListadoEntrenadores.getSelectedRow();
+        int ItemSeleccionado = tblListadoEntrenadores.getSelectedRow(); //Obtiene la Columna seleccionada
 
-        if(ItemSeleccionado != 1){
-            int idSeleccionada = (int)  item.getValueAt(ItemSeleccionado,0);
-            String nombre = (String) item.getValueAt(ItemSeleccionado, 1);
-            String region = (String) item.getValueAt(ItemSeleccionado, 2);
-            int medallasGanas = (int) item.getValueAt(ItemSeleccionado, 3);
-            int nivelExp = (int) item.getValueAt(ItemSeleccionado, 4);
-            
-            int opcion = JOptionPane.showConfirmDialog(null,
-                                                                                      "¿Esta seguro que desea eliminar el entrenador?",
-                                                                                      "Confirmar Eliminacion",
-                                                                                      JOptionPane.YES_NO_OPTION);
-            if(opcion == JOptionPane.YES_NO_OPTION){
-                ec.eliminarEntrenador(idSeleccionada);
-                item.removeRow(ItemSeleccionado);
-            }
+        if(ItemSeleccionado == -1){
+            helper.showError("Debe seleccionar un entrenadores de la lista para eliminarlo");
+            return;
         }
+        int idSeleccionada = (int)  item.getValueAt(ItemSeleccionado,0);
+        String nombre = (String) item.getValueAt(ItemSeleccionado, 1);
+        String region = (String) item.getValueAt(ItemSeleccionado, 2);
+        int medallasGanas = (int) item.getValueAt(ItemSeleccionado, 3);
+        int nivelExp = (int) item.getValueAt(ItemSeleccionado, 4);
+
+        int opcion = JOptionPane.showConfirmDialog(null,
+                                                                                  "¿Esta seguro que desea eliminar el entrenador?",
+                                                                                  "Confirmar Eliminacion",
+                                                                                  JOptionPane.YES_NO_OPTION);
+        if(opcion == JOptionPane.YES_NO_OPTION){
+            ec.eliminarEntrenador(idSeleccionada);
+            item.removeRow(ItemSeleccionado);
+        }
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        AgregarEntrenador ae = new AgregarEntrenador();
+        ae.setVisible(true);
+        ae.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MenuPrincipal mp = new MenuPrincipal();
+        mp.setVisible(true);
+        mp.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        EditarEntrenador ee = new EditarEntrenador();
+        ee.setVisible(true);
+        ee.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void cargarDatos(){
         DefaultTableModel entrenadores = (DefaultTableModel) tblListadoEntrenadores.getModel();
@@ -254,7 +293,9 @@ public class GestionEntrenadores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
