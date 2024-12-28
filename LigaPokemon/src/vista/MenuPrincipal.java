@@ -29,17 +29,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mniAgregarEntrenador = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mniEliminarEntrenador = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        mniListarEntrenadores = new javax.swing.JMenuItem();
+        mniGestionEntrenadores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mniSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Gestion Entrenador");
+        jMenu1.setText("Gestion");
 
-        mniAgregarEntrenador.setText("Agregar");
         mniAgregarEntrenador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mniAgregarEntrenadorActionPerformed(evt);
@@ -47,19 +46,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(mniAgregarEntrenador);
 
-        jMenuItem1.setText("Eliminar");
-        jMenu1.add(jMenuItem1);
+        mniEliminarEntrenador.setText("Eliminar");
+        mniEliminarEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarEntrenadorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniEliminarEntrenador);
 
         jMenuItem2.setText("Modificar");
         jMenu1.add(jMenuItem2);
 
-        mniListarEntrenadores.setText("Listar");
-        mniListarEntrenadores.addActionListener(new java.awt.event.ActionListener() {
+        mniGestionEntrenadores.setText("Entrenadores");
+        mniGestionEntrenadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniListarEntrenadoresActionPerformed(evt);
+                mniGestionEntrenadoresActionPerformed(evt);
             }
         });
-        jMenu1.add(mniListarEntrenadores);
+        jMenu1.add(mniGestionEntrenadores);
 
         jMenuBar1.add(jMenu1);
 
@@ -96,18 +100,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniSalirActionPerformed
 
     private void mniAgregarEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarEntrenadorActionPerformed
-        AgregarEntrenador ae = new AgregarEntrenador();
-        ae.setVisible(true);
-        ae.setLocationRelativeTo(null);
-        this.setVisible(false);
+
     }//GEN-LAST:event_mniAgregarEntrenadorActionPerformed
 
-    private void mniListarEntrenadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListarEntrenadoresActionPerformed
-        ListarEntrenador le = new ListarEntrenador();
+    private void mniGestionEntrenadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGestionEntrenadoresActionPerformed
+        GestionEntrenadores le = new GestionEntrenadores();
         le.setVisible(true);
         le.setLocationRelativeTo(null);
         this.setVisible(false);
-    }//GEN-LAST:event_mniListarEntrenadoresActionPerformed
+    }//GEN-LAST:event_mniGestionEntrenadoresActionPerformed
+
+    private void mniEliminarEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarEntrenadorActionPerformed
+    }//GEN-LAST:event_mniEliminarEntrenadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,10 +152,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mniAgregarEntrenador;
-    private javax.swing.JMenuItem mniListarEntrenadores;
+    private javax.swing.JMenuItem mniEliminarEntrenador;
+    private javax.swing.JMenuItem mniGestionEntrenadores;
     private javax.swing.JMenuItem mniSalir;
     // End of variables declaration//GEN-END:variables
 }
