@@ -44,6 +44,7 @@ public class EditarEntrenador extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtNivelExp = new javax.swing.JTextField();
         txtMedallasGanadas = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
@@ -108,7 +109,16 @@ public class EditarEntrenador extends javax.swing.JFrame {
 
         txtMedallasGanadas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Limpiar.png")); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,8 +155,10 @@ public class EditarEntrenador extends javax.swing.JFrame {
                                     .addComponent(txtMedallasGanadas, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(btnEditar)))
+                        .addGap(87, 87, 87)
+                        .addComponent(btnLimpiar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 69, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -168,9 +180,11 @@ public class EditarEntrenador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtNivelExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(btnEditar)
-                .addGap(42, 42, 42))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -210,7 +224,7 @@ public class EditarEntrenador extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtIdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVolver)
@@ -237,6 +251,11 @@ public class EditarEntrenador extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String idBuscar = txtIdBuscar.getText();
 
+        if(!(ec.isNumber(idBuscar))){
+            helper.showError("El id tiene que ser un valor numerico");
+            return;
+        }
+        
         if(idBuscar.isEmpty()){
             helper.showError("El ID no puede estar vacio");
             return;
@@ -249,8 +268,41 @@ public class EditarEntrenador extends javax.swing.JFrame {
         txtRegion.setText(entrenadorEncontrado.getRegion());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtIdBuscar.setText("");
+        txtMedallasGanadas.setText("");
+        txtNivelExp.setText("");
+        txtNombre.setText("");
+        txtRegion.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        String id = txtIdBuscar.getText();
+        String nombre = txtNombre.getText();
+        String region = txtRegion.getText();
+        String medallasGanadas = txtMedallasGanadas.getText();
+        String nivelExperiencia = txtNivelExp.getText();
+        
+        if(nombre.isEmpty() || region.isEmpty() || medallasGanadas.isEmpty() || nivelExperiencia.isEmpty()){
+            helper.showError("Los campos no pueden estar vacios");
+            return;
+        }
+
+        Entrenador entrenadorEncontrado = ec.buscarEntrenadorPorID(Integer.parseInt(id));
+        
+        if(entrenadorEncontrado.getMedallasGanadas() > Integer.parseInt(medallasGanadas)){
+            helper.showError("El valor de las medallas ganadas no puede disminuir");
+            return;
+        }
+        
+        if(entrenadorEncontrado.getNivelExperiencia()> Integer.parseInt(nivelExperiencia)){
+            helper.showError("El nivel de experiencia no puede disminuir");
+            return;
+        }        
+        
+        ec.editarEntrenador(Integer.parseInt(id), nombre, region,Integer.parseInt(medallasGanadas), Integer.parseInt(nivelExperiencia));
+        helper.showInformation("Se modifico el entrenador Correctamente");
+                
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
@@ -291,6 +343,7 @@ public class EditarEntrenador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

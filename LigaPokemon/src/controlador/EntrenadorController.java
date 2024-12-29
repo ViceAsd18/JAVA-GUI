@@ -118,6 +118,23 @@ public class EntrenadorController {
             System.out.println("Error eliminar Entrenador " + e.getMessage());
         }
     }
+    
+    
+    public void editarEntrenador(int parId, String parNombre, String parRegion,int parMedallasGanadas, int parNivelExperiencia){
+        String query = "UPDATE entrenador SET nombre = ?,region = ?, medallasGanadas = ?, nivelExperiencia = ? WHERE idEntrenador = ?;";
+        
+        try {
+            PreparedStatement ps = cx.getConnection().prepareStatement(query);
+            ps.setString(1, parNombre);
+            ps.setString(2,parRegion);
+            ps.setInt(3, parMedallasGanadas);
+            ps.setInt(4, parNivelExperiencia);
+            ps.setInt(5, parId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error modificar Entrenador " + e.getMessage());
+        }
+    }
    
     
    

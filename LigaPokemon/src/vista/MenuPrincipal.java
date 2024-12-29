@@ -27,35 +27,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mniGestionPokemon = new javax.swing.JMenu();
+        mniGestionEntrenadores = new javax.swing.JMenuItem();
         mniAgregarEntrenador = new javax.swing.JMenuItem();
         mniEliminarEntrenador = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        mniGestionEntrenadores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mniSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Gestion");
-
-        mniAgregarEntrenador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniAgregarEntrenadorActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mniAgregarEntrenador);
-
-        mniEliminarEntrenador.setText("Eliminar");
-        mniEliminarEntrenador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniEliminarEntrenadorActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mniEliminarEntrenador);
-
-        jMenuItem2.setText("Modificar");
-        jMenu1.add(jMenuItem2);
+        mniGestionPokemon.setText("Gestion");
 
         mniGestionEntrenadores.setText("Entrenadores");
         mniGestionEntrenadores.addActionListener(new java.awt.event.ActionListener() {
@@ -63,9 +45,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 mniGestionEntrenadoresActionPerformed(evt);
             }
         });
-        jMenu1.add(mniGestionEntrenadores);
+        mniGestionPokemon.add(mniGestionEntrenadores);
 
-        jMenuBar1.add(jMenu1);
+        mniAgregarEntrenador.setText("Pokemon");
+        mniAgregarEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarEntrenadorActionPerformed(evt);
+            }
+        });
+        mniGestionPokemon.add(mniAgregarEntrenador);
+
+        mniEliminarEntrenador.setText("Eliminar");
+        mniEliminarEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarEntrenadorActionPerformed(evt);
+            }
+        });
+        mniGestionPokemon.add(mniEliminarEntrenador);
+
+        jMenuItem2.setText("Modificar");
+        mniGestionPokemon.add(jMenuItem2);
+
+        jMenuBar1.add(mniGestionPokemon);
 
         jMenu2.setText("Salir");
 
@@ -100,7 +101,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniSalirActionPerformed
 
     private void mniAgregarEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarEntrenadorActionPerformed
-
+        GestionPokemon gp = new GestionPokemon();
+        gp.setVisible(true);
+        gp.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_mniAgregarEntrenadorActionPerformed
 
     private void mniGestionEntrenadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGestionEntrenadoresActionPerformed
@@ -149,13 +153,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mniAgregarEntrenador;
     private javax.swing.JMenuItem mniEliminarEntrenador;
     private javax.swing.JMenuItem mniGestionEntrenadores;
+    private javax.swing.JMenu mniGestionPokemon;
     private javax.swing.JMenuItem mniSalir;
     // End of variables declaration//GEN-END:variables
 }

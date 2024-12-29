@@ -214,7 +214,7 @@ public class GestionEntrenadores extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         DefaultTableModel item = (DefaultTableModel) tblListadoEntrenadores.getModel();
-        int ItemSeleccionado = tblListadoEntrenadores.getSelectedRow(); //Obtiene la Columna seleccionada
+        int ItemSeleccionado = tblListadoEntrenadores.getSelectedRow(); //Obtiene el indice de la  Columna seleccionada
 
         if(ItemSeleccionado == -1){
             helper.showError("Debe seleccionar un entrenadores de la lista para eliminarlo");
