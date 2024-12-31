@@ -7,6 +7,7 @@ package vista;
 import controlador.EntrenadorController;
 import controlador.HelperController;
 import java.awt.Color;
+import javax.swing.JTextField;
 
 /**
  *
@@ -80,12 +81,32 @@ public class AgregarEntrenador extends javax.swing.JFrame {
         lblNivelExp.setText("Nivel Exp");
 
         txtRegion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtRegion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRegionActionPerformed(evt);
+            }
+        });
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
 
         txtMedallasGanadas.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtMedallasGanadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMedallasGanadasActionPerformed(evt);
+            }
+        });
 
         txtNivelExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtNivelExp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNivelExpActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Limpiar.png")); // NOI18N
@@ -182,7 +203,7 @@ public class AgregarEntrenador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,6 +268,41 @@ public class AgregarEntrenador extends javax.swing.JFrame {
        lblNivelExp.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        JTextField textoVacio = buscarTextoVacio();
+        textoVacio.requestFocus();
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegionActionPerformed
+        JTextField textoVacio = buscarTextoVacio();
+        textoVacio.requestFocus();
+    }//GEN-LAST:event_txtRegionActionPerformed
+
+    private void txtMedallasGanadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedallasGanadasActionPerformed
+        JTextField textoVacio = buscarTextoVacio();
+        textoVacio.requestFocus();
+    }//GEN-LAST:event_txtMedallasGanadasActionPerformed
+
+    private void txtNivelExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNivelExpActionPerformed
+        JTextField textoVacio = buscarTextoVacio();
+        textoVacio.requestFocus();
+    }//GEN-LAST:event_txtNivelExpActionPerformed
+
+    private JTextField buscarTextoVacio(){
+        JTextField TextoVacio = null;
+        JTextField campos[] = {txtNombre,txtRegion,txtMedallasGanadas,txtNivelExp};
+        
+        for(JTextField i: campos){
+            if(i.getText().isEmpty()){
+                TextoVacio = i;
+                return  TextoVacio;
+            }
+        }
+        return  TextoVacio;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
