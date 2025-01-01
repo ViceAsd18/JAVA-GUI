@@ -62,8 +62,26 @@ public class PokemonController {
         return pokemones;
     }
     
+    public int obtenerCantidadPokemonesEntrenadores(int parIdEntrenador){
+        int contador = 0;
+        String query = "SELECT COUNT(*) FROM pokemon WHERE idEntrenador = ?;";
+
+        try {
+            PreparedStatement ps = cx.getConnection().prepareStatement(query);
+            ps.setInt(1, parIdEntrenador);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                contador = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Error obtener cantidad de pokemones del entrenador " + e.getMessage());
+        }
+        return contador;
+    }
+    
+    
     public void agregarPokemon(String parNombre,String parEspecie,String tipoPrincipal,String tipoSecundario,int parNivel, int parIdEntrenador){
-        String query = "INSERT INTO pokemon (nombres,especie,tipoPrincipal,tipoSecundario,nivel,idEntrenador) VALUES (?,?,?,?,?,?);";
+        String query = "INSERT INTO pokemon (nombre,especie,tipoPrincipal,tipoSecundario,nivel,idEntrenador) VALUES (?,?,?,?,?,?);";
         
         try {
             PreparedStatement ps = cx.getConnection().prepareStatement(query);

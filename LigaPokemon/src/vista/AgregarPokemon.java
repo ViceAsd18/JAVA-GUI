@@ -4,7 +4,13 @@
  */
 package vista;
 
+import controlador.EntrenadorController;
+import controlador.HelperController;
 import controlador.PokemonController;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.Entrenador;
 
 /**
  *
@@ -17,6 +23,7 @@ public class AgregarPokemon extends javax.swing.JFrame {
      */
     public AgregarPokemon() {
         initComponents();
+        cargarComboIdEntrenador();
     }
 
     /**
@@ -29,27 +36,28 @@ public class AgregarPokemon extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblAgregarPokemonTItulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblTipoSecundario = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblEspecie = new javax.swing.JLabel();
+        lblTipoPrincipal = new javax.swing.JLabel();
+        lblIdEntrenador = new javax.swing.JLabel();
+        lblNivel = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtEspecie = new javax.swing.JTextField();
         txtTipoPrincipal = new javax.swing.JTextField();
         txtTipoSecundario = new javax.swing.JTextField();
         txtNivel = new javax.swing.JTextField();
         cmbIdEntrenador = new javax.swing.JComboBox<>();
+        btLimpiar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel1.setText("Agregar Pokemon");
+        lblAgregarPokemonTItulo.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        lblAgregarPokemonTItulo.setText("Agregar Pokemon");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,34 +65,34 @@ public class AgregarPokemon extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblAgregarPokemonTItulo)
                 .addGap(147, 147, 147))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblAgregarPokemonTItulo)
                 .addGap(15, 15, 15))
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("Tipo Secundario");
+        lblTipoSecundario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTipoSecundario.setText("Tipo Secundario");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Nombre");
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNombre.setText("Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Especie");
+        lblEspecie.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblEspecie.setText("Especie");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("Tipo Principal");
+        lblTipoPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTipoPrincipal.setText("Tipo Principal");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setText("ID Entrenador");
+        lblIdEntrenador.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblIdEntrenador.setText("ID Entrenador");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel7.setText("Nivel");
+        lblNivel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNivel.setText("Nivel");
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
@@ -98,7 +106,16 @@ public class AgregarPokemon extends javax.swing.JFrame {
 
         cmbIdEntrenador.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
-        btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Limpiar.png")); // NOI18N
+        btLimpiar.setText("Limpiar");
+        btLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,74 +129,78 @@ public class AgregarPokemon extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTipoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbIdEntrenador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(65, 65, 65)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblNombre)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtTipoSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblEspecie)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar)
-                .addGap(199, 199, 199))
+                                    .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(38, 38, 38)
+                            .addComponent(lblTipoPrincipal)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtTipoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblIdEntrenador)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cmbIdEntrenador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblTipoSecundario)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTipoSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblNivel)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(btLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblEspecie)
                     .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblTipoPrincipal)
                     .addComponent(txtTipoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblTipoSecundario)
                     .addComponent(txtTipoSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblNivel)
                     .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblIdEntrenador)
                     .addComponent(cmbIdEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(btnAgregar)
-                .addGap(33, 33, 33))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btLimpiar)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -196,7 +217,7 @@ public class AgregarPokemon extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +235,7 @@ public class AgregarPokemon extends javax.swing.JFrame {
                 .addGap(68, 68, 68))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(567, Short.MAX_VALUE)
+                    .addContainerGap(585, Short.MAX_VALUE)
                     .addComponent(btnVolver)
                     .addGap(14, 14, 14)))
         );
@@ -223,23 +244,75 @@ public class AgregarPokemon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     PokemonController pc = new PokemonController();
+    EntrenadorController ec = new EntrenadorController();
+    HelperController helper = new HelperController();
     
+    private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
+        txtEspecie.setText("");
+        txtNivel.setText("");
+        txtNombre.setText("");
+        txtTipoPrincipal.setText("");
+        txtTipoSecundario.setText("");
+    }//GEN-LAST:event_btLimpiarActionPerformed
+
+    
+    private void cargarComboIdEntrenador(){
+        List<Entrenador> entrenadores = ec.obtenerEntrenadores();
+        List<String> idEntrenadores = new ArrayList<>();
+        
+        for(Entrenador i: entrenadores){
+            if(!(idEntrenadores.contains(i.getIdEntrenador()))){
+                idEntrenadores.add(String.valueOf(i.getIdEntrenador()) + " - " + i.getNombre());
+            }
+        }
+        
+        for(String i: idEntrenadores){
+            cmbIdEntrenador.addItem(i);
+        }
+    }
+    
+    
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        GestionPokemon gp = new GestionPokemon();
+        gp.setVisible(true);
+        gp.setLocationRelativeTo(null);
+        this.setVisible(false);                
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String nombre = txtNombre.getText();
         String especie = txtEspecie.getText();
         String tipoPrincipal = txtTipoPrincipal.getText();
         String tipoSecundario = txtTipoSecundario.getText();
         String nivel = txtNivel.getText();
+        String idEntrenadorNombre = String.valueOf(cmbIdEntrenador.getSelectedItem());
         
+        if(nombre.isEmpty() || especie.isEmpty() || tipoPrincipal.isEmpty() || nivel.isEmpty() || idEntrenadorNombre.isEmpty()){
+            helper.showError("Los campos En rojo no pueden estar vacios");
+            lblEspecie.setForeground(Color.red);
+            lblIdEntrenador.setForeground(Color.red);
+            lblNivel.setForeground(Color.red);
+            lblNombre.setForeground(Color.red);
+            lblTipoPrincipal.setForeground(Color.red);
+            return;
+        }
         
+        if(!(ec.isNumber(nivel))){
+            helper.showError("El campo 'Nivel' Tiene que ser un valor numerico");
+            return;
+        }
+        
+        String idEntrenadorSeleccionado = idEntrenadorNombre.split(" ")[0];
+        int cantidadPoke = pc.obtenerCantidadPokemonesEntrenadores(Integer.parseInt(idEntrenadorSeleccionado));
+        
+        if(cantidadPoke >= 6){
+            helper.showError("El entrenador Seleccionado ya cuenta con 6 pokemon");
+            return;
+        }
+        
+        pc.agregarPokemon(nombre, especie, tipoPrincipal, tipoSecundario, Integer.parseInt(nivel), Integer.parseInt(idEntrenadorSeleccionado));
+        helper.showInformation("Se agrego un nuevo Pokemon");
     }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        GestionPokemon gp = new GestionPokemon();
-        gp.setVisible(true);
-        gp.setLocationRelativeTo(null);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,18 +350,19 @@ public class AgregarPokemon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btLimpiar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbIdEntrenador;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblAgregarPokemonTItulo;
+    private javax.swing.JLabel lblEspecie;
+    private javax.swing.JLabel lblIdEntrenador;
+    private javax.swing.JLabel lblNivel;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTipoPrincipal;
+    private javax.swing.JLabel lblTipoSecundario;
     private javax.swing.JTextField txtEspecie;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNombre;
