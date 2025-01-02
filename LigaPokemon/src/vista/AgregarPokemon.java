@@ -107,7 +107,7 @@ public class AgregarPokemon extends javax.swing.JFrame {
         cmbIdEntrenador.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
         btLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Limpiar.png")); // NOI18N
+        btLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\Ejercicios-JAVA\\LigaPokemon\\img\\Limpiar.png")); // NOI18N
         btLimpiar.setText("Limpiar");
         btLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +116,7 @@ public class AgregarPokemon extends javax.swing.JFrame {
         });
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\Ejercicios-JAVA\\LigaPokemon\\img\\Agregar.png")); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +129,7 @@ public class AgregarPokemon extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(65, 65, 65)
@@ -163,10 +164,10 @@ public class AgregarPokemon extends javax.swing.JFrame {
                                         .addGap(34, 34, 34)
                                         .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(btLimpiar)
+                        .addContainerGap()
+                        .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(

@@ -109,7 +109,7 @@ public class AgregarEntrenador extends javax.swing.JFrame {
         });
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Limpiar.png")); // NOI18N
+        btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\Ejercicios-JAVA\\LigaPokemon\\img\\Limpiar.png")); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +118,7 @@ public class AgregarEntrenador extends javax.swing.JFrame {
         });
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\img\\Agregar.png")); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\Ejercicios-JAVA\\LigaPokemon\\img\\Agregar.png")); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
