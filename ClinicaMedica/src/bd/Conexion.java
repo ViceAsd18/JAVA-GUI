@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Conexion {
-    String bd = "ClinicaMedica";
+    String bd = "clinicamedica";
     String url = "jdbc:mysql://localhost:3306/" + bd;
-    String user = "";
+    String user = "root";
     String pass = "";
     String driver = "com.mysql.cj.jdbc.Driver";
     
