@@ -17,6 +17,32 @@ public class ServicioController {
         cx.conectar();
     }
     
+    public Servicio buscarServicioPorCodigo(String parCodigo){
+        String query = "SELECT * FROM servicio WHERE codigoServicio = '" + parCodigo + "';"; 
+        Servicio servicioEncontrado = null;
+        
+        try {
+            ResultSet rs = cx.EjecutarQuery(query);
+            while(rs.next()){
+                servicioEncontrado = new Servicio(
+                        rs.getString("codigoServicio"),
+                        rs.getString("nombre"),
+                        rs.getString("descripcion"),
+                        rs.getDouble("precio")
+                );
+            }
+        } catch (Exception e) {
+            System.out.println("Error buscar Servicio por codigo " + e.getMessage());
+        }
+        return servicioEncontrado;
+    }
+    
+    
+
+
+
+    
+    //CRUD
     public List<Servicio> obtenerServicios(){
         List<Servicio> servicios = new ArrayList<>();
         String query = "SELECT * FROM servicio";
@@ -64,6 +90,21 @@ public class ServicioController {
         }
     }
     
+    public void editarServicio(String parCodigoServicio,String parNombre,String parDescripcion, double parPrecio){
+        String query = "UPDATE servicio SET nombre = ?, descripcion = ?, precio = ? WHERE codigoServicio = ?;";
+        
+        try {
+            PreparedStatement ps = cx.getConnection().prepareStatement(query);
+            ps.setString(1, parNombre);
+            ps.setString(2,parDescripcion);
+            ps.setDouble(3, parPrecio);
+            ps.setString(4, parCodigoServicio);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error editar Servicio " + e.getMessage());
+        }
+        
+    }
     
     
     

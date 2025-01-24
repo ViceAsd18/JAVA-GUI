@@ -40,6 +40,8 @@ public class GestionServicios extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
+        btnVerDescripcion = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +56,20 @@ public class GestionServicios extends javax.swing.JFrame {
             new String [] {
                 "Codigo De Servicio", "Nombre", "Precio"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblListadoServicios.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cambiosTabla(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblListadoServicios);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -83,6 +98,14 @@ public class GestionServicios extends javax.swing.JFrame {
             }
         });
 
+        btnVerDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVerDescripcion.setText("Ver Descripcion");
+        btnVerDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerDescripcionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -97,8 +120,10 @@ public class GestionServicios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
+                        .addComponent(btnVerDescripcion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
                 .addContainerGap())
@@ -108,14 +133,24 @@ public class GestionServicios extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAgregar)
+                        .addComponent(btnEliminar)
+                        .addComponent(btnVerDescripcion)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
+
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,11 +158,17 @@ public class GestionServicios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 358, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -161,6 +202,76 @@ public class GestionServicios extends javax.swing.JFrame {
         modelo.removeRow(filaSeleccionada);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    
+    
+    
+    
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        Inicio ini = new Inicio();
+        ini.setVisible(true);
+        ini.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnVerDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDescripcionActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblListadoServicios.getModel();
+        String[] opciones = {"Ver Descripcion","Editar Descripcion"};
+        
+        int filaSeleccionada = tblListadoServicios.getSelectedRow();
+        
+        if(filaSeleccionada == -1){
+            helper.showError("Ningun servicio fue seleccionado");
+            return;
+        }
+        
+        int seleccion = helper.mostrarOpciones(opciones);
+        String codigoSeleccionado = (String) modelo.getValueAt(filaSeleccionada, 0);
+        switch (seleccion) {
+            case 0:
+                Servicio servicioEncontrado = sc.buscarServicioPorCodigo(codigoSeleccionado);
+                helper.showInformation(servicioEncontrado.getDescripcion());                    
+                break;
+            case 1:
+                String nuevaDescripcion = helper.showInputString("Ingrese la nueva Descripcion",sc.buscarServicioPorCodigo(codigoSeleccionado).getDescripcion());
+                String nombre = (String) modelo.getValueAt(filaSeleccionada, 1);
+                double precio = (double) modelo.getValueAt(filaSeleccionada, 2);
+                
+                if(nuevaDescripcion == null){
+                    return;
+                }
+                
+                sc.editarServicio(codigoSeleccionado, nombre, nuevaDescripcion, precio);
+                helper.showInformation("Se modifico la descripcion del servicio");
+                break;
+        }
+    }//GEN-LAST:event_btnVerDescripcionActionPerformed
+
+    private void cambiosTabla(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cambiosTabla
+        DefaultTableModel modelo = (DefaultTableModel) tblListadoServicios.getModel();
+        
+        int fila = tblListadoServicios.getSelectedRow();
+        int columna = tblListadoServicios.getSelectedColumn();
+        
+        
+        if(fila != -1){
+            String codigo = (String) modelo.getValueAt(fila, 0);
+            String nombre = (String) modelo.getValueAt(fila,1);
+            String descripcion = sc.buscarServicioPorCodigo(codigo).getDescripcion();
+            double precio = (double) modelo.getValueAt(fila, 2);
+            
+            if(columna == 1){
+                String nuevoNombre = (String) modelo.getValueAt(fila, columna);
+                sc.editarServicio(codigo,nuevoNombre,descripcion,precio);
+            }
+            
+            if(columna == 2){
+                double precioNuevo = (double) modelo.getValueAt(fila, columna);
+                sc.editarServicio(codigo, nombre, descripcion, precioNuevo);
+            }
+        }
+        
+    }//GEN-LAST:event_cambiosTabla
+
     ServicioController sc = new ServicioController();
     HelperController helper = new HelperController();
     
@@ -178,9 +289,7 @@ public class GestionServicios extends javax.swing.JFrame {
         }
         
     }
-    
-    
-    
+
     
     
     
@@ -225,6 +334,8 @@ public class GestionServicios extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRecargar;
+    private javax.swing.JButton btnVerDescripcion;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

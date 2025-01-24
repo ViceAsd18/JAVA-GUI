@@ -9,7 +9,6 @@ public class ClinicaMedica {
         Inicio ini = new Inicio();
         ini.setVisible(true);
         ini.setLocationRelativeTo(null);
-        
     }
 }
     
