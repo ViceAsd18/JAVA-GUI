@@ -108,5 +108,36 @@ public class ServicioController {
     
     
     
+    //Filtro
+    public List<Servicio> filtroServicio(String parColumna,String buscador,String parOrderBy,int precioInicio,int precioFInal){
+    String query = "SELECT * FROM servicio WHERE precio BETWEEN " + precioInicio + " AND " + precioFInal;
+    
+    if(buscador != null && !buscador.trim().isEmpty()){
+        query += " AND " + parColumna + " = '" + buscador + "'";
+    }
+        
+    query += " ORDER BY precio " + parOrderBy;
+            
+    List<Servicio> servicioEncontrados = new ArrayList<>();
+        try {
+            ResultSet rs = cx.EjecutarQuery(query);
+            while(rs.next()){
+                servicioEncontrados.add(new Servicio(
+                        rs.getString("codigoServicio"),
+                        rs.getString("nombre"),
+                        rs.getString("descripcion"),
+                        rs.getDouble("precio")
+                ));
+            }
+        } catch (Exception e) {
+            System.out.println("Error filtro servicio " + e.getMessage());
+        }
+    return servicioEncontrados;
+    }
+    
+    
+    
+    
     
 }
+
