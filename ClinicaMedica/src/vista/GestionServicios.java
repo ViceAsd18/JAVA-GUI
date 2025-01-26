@@ -22,6 +22,7 @@ public class GestionServicios extends javax.swing.JFrame {
     public GestionServicios() {
         initComponents();
         cargarDatos();
+        spnValorMaximo.setValue(100000);
     }
 
     /**
@@ -159,6 +160,11 @@ public class GestionServicios extends javax.swing.JFrame {
         jLabel2.setText("Buscar");
 
         txtBuscadorNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscadorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscadorNombreActionPerformed(evt);
+            }
+        });
 
         Buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vicen\\Desktop\\Ejercicios-JAVA\\ClinicaMedica\\img\\Buscar.png")); // NOI18N
@@ -374,6 +380,10 @@ public class GestionServicios extends javax.swing.JFrame {
             });
         }
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void txtBuscadorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorNombreActionPerformed
+        BuscarActionPerformed(evt);
+    }//GEN-LAST:event_txtBuscadorNombreActionPerformed
 
     
     ServicioController sc = new ServicioController();

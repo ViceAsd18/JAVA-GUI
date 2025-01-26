@@ -113,7 +113,7 @@ public class ServicioController {
     String query = "SELECT * FROM servicio WHERE precio BETWEEN " + precioInicio + " AND " + precioFInal;
     
     if(buscador != null && !buscador.trim().isEmpty()){
-        query += " AND " + parColumna + " = '" + buscador + "'";
+        query += " AND " + parColumna + " LIKE '" + buscador + "%'";
     }
         
     query += " ORDER BY precio " + parOrderBy;
