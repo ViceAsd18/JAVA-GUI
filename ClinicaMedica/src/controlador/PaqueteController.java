@@ -25,6 +25,26 @@ public class PaqueteController {
         cx.conectar();
     }
     
+    public Paquete buscarPaquetePorCodigo(String parCodigo){
+        Paquete paqueteEncontrado = null;
+        String query = "SELECT * FROM paquete WHERE codigoPaquete = '" + parCodigo + "';";
+        
+        try {
+            ResultSet rs = cx.EjecutarQuery(query);
+            while(rs.next()){
+                paqueteEncontrado = new Paquete(
+                        rs.getString("codigoPaquete"),
+                        rs.getString("nombrePaquete"),
+                        rs.getDouble("precioPaquete")
+                );
+            }
+        } catch (Exception e) {
+            System.out.println("Error Buscar paquete por codigo " + e.getMessage());
+        }
+        return paqueteEncontrado;
+    }
+    
+    
     //CRUD
     public List<Paquete> obtenerPaquetes(){
         List<Paquete> paquetes = new ArrayList<>();

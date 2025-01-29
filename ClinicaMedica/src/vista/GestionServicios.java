@@ -40,7 +40,7 @@ public class GestionServicios extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
-        btnVerDescripcion = new javax.swing.JButton();
+        btnDescripcion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
@@ -105,11 +105,11 @@ public class GestionServicios extends javax.swing.JFrame {
             }
         });
 
-        btnVerDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnVerDescripcion.setText("Ver Descripcion");
-        btnVerDescripcion.addActionListener(new java.awt.event.ActionListener() {
+        btnDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDescripcion.setText("Descripcion");
+        btnDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDescripcionActionPerformed(evt);
+                btnDescripcionActionPerformed(evt);
             }
         });
 
@@ -122,7 +122,7 @@ public class GestionServicios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVerDescripcion)
+                        .addComponent(btnDescripcion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,7 +137,7 @@ public class GestionServicios extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAgregar)
-                        .addComponent(btnVerDescripcion)
+                        .addComponent(btnDescripcion)
                         .addComponent(btnEliminar))
                     .addComponent(btnRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -304,7 +304,7 @@ public class GestionServicios extends javax.swing.JFrame {
     
     
     
-    private void btnVerDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDescripcionActionPerformed
+    private void btnDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescripcionActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblListadoServicios.getModel();
         String[] opciones = {"Ver Descripcion","Editar Descripcion"};
         
@@ -335,7 +335,7 @@ public class GestionServicios extends javax.swing.JFrame {
                 helper.showInformation("Se modifico la descripcion del servicio");
                 break;
         }
-    }//GEN-LAST:event_btnVerDescripcionActionPerformed
+    }//GEN-LAST:event_btnDescripcionActionPerformed
 
     private void cambiosTabla(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cambiosTabla
         DefaultTableModel modelo = (DefaultTableModel) tblListadoServicios.getModel();
@@ -471,9 +471,9 @@ public class GestionServicios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnDescripcion;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRecargar;
-    private javax.swing.JButton btnVerDescripcion;
     private javax.swing.JButton btnVerPaquetes;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
